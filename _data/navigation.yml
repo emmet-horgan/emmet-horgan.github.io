@@ -17,6 +17,8 @@ main:
     
   - title: "CV"
     url: /cv/
+
+  - og_image: "mountain-sticker.png"
     
 #  - title: "Guide"
 #    url: /markdown/
