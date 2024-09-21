@@ -1,0 +1,69 @@
+site_name: emmet-horgan
+nav:
+    - Blog:
+      - blog/index.md
+    - About me: index.md
+    - Ciriculum Vitae: cv.md
+
+theme: 
+    name: material
+    logo: assets/logo.png
+    favicon: assets/favicon.ico
+    icon:
+      repo: fontawesome/brands/github
+    font: 
+        text: Roboto Mono
+    palette:
+        - media: "(prefers-color-scheme)"
+          slate: grey
+          toggle:
+            icon: material/brightness-auto
+            name: Switch to light mode
+
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default 
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          toggle:
+            icon: material/brightness-4
+            name: Switch to system preference
+
+    features:
+        - navigation.indexes
+        - navigation.sections
+        - navigation.tabs
+        - content.code.annotate
+plugins: 
+    - blog:
+        categories: true
+        draft: true
+        blog_toc: true
+        pagination_per_page: 5
+    - search
+
+markdown_extensions: 
+    - pymdownx.arithmatex:
+        generic: true
+extra_javascript:
+    - javascripts/mathjax.js
+    - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra:
+  social:
+    - icon: 'simple/github'
+      link: 'https://github.com/emmet-horgan'
+#theme: terminal
+repo_url: https://github.com/emmet-horgan/
+repo_name: emmet-horgan
+#plugins: 
+#  - search
+#extra_javascript:
+#  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS_HTML
+#  - mathjaxhelper.js
+#markdown_extensions: 
+#  - pymdownx.arithmatex

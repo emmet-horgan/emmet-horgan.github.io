@@ -1,0 +1,1 @@
+`mkdocs` website for technical blogs and CV 
