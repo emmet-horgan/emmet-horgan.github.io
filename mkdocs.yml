@@ -39,6 +39,7 @@ theme:
         - navigation.sections
         - navigation.tabs
         - content.code.annotate
+        - content.code.copy
 plugins: 
     - blog:
         categories: true
@@ -50,6 +51,22 @@ plugins:
 markdown_extensions: 
     - pymdownx.arithmatex:
         generic: true
+    - attr_list
+    - md_in_html
+    - tables
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
 extra_javascript:
     - javascripts/mathjax.js
     - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
@@ -57,13 +74,6 @@ extra:
   social:
     - icon: 'simple/github'
       link: 'https://github.com/emmet-horgan'
-#theme: terminal
 repo_url: https://github.com/emmet-horgan/
 repo_name: emmet-horgan
-#plugins: 
-#  - search
-#extra_javascript:
-#  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS_HTML
-#  - mathjaxhelper.js
-#markdown_extensions: 
-#  - pymdownx.arithmatex
+
