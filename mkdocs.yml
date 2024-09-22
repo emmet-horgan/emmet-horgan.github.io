@@ -7,8 +7,8 @@ nav:
 
 theme: 
     name: material
-    logo: assets/logo.png
-    favicon: assets/favicon.ico
+    logo: assets/circle-album-inspired/logo.png
+    favicon: assets/circle-album-inspired/favicon.ico
     icon:
       repo: fontawesome/brands/github
     font: 
@@ -38,8 +38,10 @@ theme:
         - navigation.indexes
         - navigation.sections
         - navigation.tabs
+        - navigation.footer
         - content.code.annotate
         - content.code.copy
+        - header.autohide
 plugins: 
     - blog:
         categories: true
@@ -71,9 +73,15 @@ extra_javascript:
     - javascripts/mathjax.js
     - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra:
-  social:
-    - icon: 'simple/github'
-      link: 'https://github.com/emmet-horgan'
+    generator: false
+    social:
+        - icon: 'fontawesome/brands/github'
+          link: 'https://github.com/emmet-horgan'
+        - icon: 'fontawesome/brands/linkedin'
+          link: 'https://www.linkedin.com/in/emmethorgan/'
+    analytics:
+        provider: google
+        property: G-KQMYZCGPZX
 repo_url: https://github.com/emmet-horgan/
 repo_name: emmet-horgan
 
