@@ -5,13 +5,10 @@ categories:
   - fft
   - signal-processing
 ---
-A logical derivation of the Discrete Fourier Transform from the Continuous-Time Fourier Transform
-
-<!-- more -->
 The general continuous-time Fourier Transform can be stated as follows,
 
 $$X(f) = \int_{-\infty}^{+\infty} x(t) e^{-i 2\pi f t}\;dt$$
-
+<!-- more -->
 In a discrete system we can only sample the input signal , \(x(t)\), at a constant interval of time. That interval of time is called the sampling time, \(T_s\), which is also a sampling frequency, \(f_{s}=\frac{1}{T_{s}}\). If the input sequence is truly infinite in length, then we can take an infinite amount of samples each at an interval of \(T_s\). Thus, translating from the continuous-time representation,
 
 $$X(f) = \sum_{n=-\infty}^{\infty}\underbrace{T_s\cdot\;x(nT_{s})}_{x[n]}e^{-i2\pi fnT_s}$$
