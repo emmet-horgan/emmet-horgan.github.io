@@ -1,6 +1,6 @@
 ---
 title: 'Thoughts on Supporting Multiple Boards and Architectures in Rust'
-date: 2024-10-14
+#date: 2024-10-14
 draft: true
 categories:
   - rust

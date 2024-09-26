@@ -1,7 +1,7 @@
 ---
 title: 'Chirp Z Transform FFT Algorithm'
-date: 2024-10-14
-draft: true
+date: 2024-09-26
+draft: false
 categories:
   - fft
   - signal-processing
@@ -44,7 +44,7 @@ A well known property of the Fourier transform is the convolution theorem,
 
 $$ (x * y)(t) = \mathscr{F^{-1}}\{\mathscr{F}\{ x \} \cdot \mathscr{F}\{ y \}\} $$
 
-This theorem holds for the DTFT but is slightly different for the DFT. For the DTFT it can be easily fshown that the following is true,
+This theorem holds for the DTFT but is slightly different for the DFT. For the DTFT it can be easily shown that the following is true,
 
 $$ x * y = \text{DTFT}^{-1}\{ \text{DTFT}\{x\} \cdot \text{DTFT}\{y\} \} $$
 

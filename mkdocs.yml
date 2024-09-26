@@ -46,6 +46,7 @@ plugins:
     - blog:
         categories: true
         draft: true
+        draft_if_future_date: true
         blog_toc: true
         pagination_per_page: 5
     - search
