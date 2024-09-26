@@ -1,6 +1,6 @@
 ---
 title: 'Cooley-Tukey FFT Algorithm'
-#date: 2024-10-14
+date: 2024-09-14
 draft: true
 categories:
   - fft
