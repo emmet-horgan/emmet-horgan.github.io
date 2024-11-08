@@ -1,0 +1,42 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'emmet-horgan'
+theme = 'cybernacly'
+email = 'rickarysanchez@gmail.com'
+
+pagination.pagerSize = 4
+
+[markup]
+
+    [markup.highlight]
+    style = 'base16-snazzy'
+    lineNos = true
+    lineNumbersInTable = false
+
+    [markup.tableOfContents]
+    endLevel = 6
+    ordered = false
+    startLevel = 2
+
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+            [markup.goldmark.extensions.passthrough]
+                enable = true
+            [markup.goldmark.extensions.passthrough.delimiters]
+                block = [['\[', '\]'], ['$$', '$$']]
+                inline = [['\(', '\)']]
+
+
+
+[params]
+bio = "Embedded Software Engineer, Tech Enthusiast, and Language Nerd"
+description = "A blog about tech, programming, language and whatever im currently interested in"
+math = true
+
+    [params.author]
+    name = "Emmet Horgan"
+    email = "horgan098@gmail.com"
+
+    [params.social]
+    github = "https://github.com/emmet-horgan"
+    email = "mailto:horgan098@gmail.com"

@@ -1,0 +1,9 @@
+{
+    "papers": [
+      {
+        "title": "Deep Learning for Neonatal Brain Injury Grading",
+        "link": "/papers/deep_learning_for_neonatal_brain_injury_grading.pdf",
+        "description": "Development of a deep learning model for grading neonatal brain injuries incurred due to hypoxic-ischemic encephalopathy"
+      }
+    ]
+  }
