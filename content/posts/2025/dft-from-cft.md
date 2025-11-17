@@ -44,11 +44,11 @@ Now this is not zero, but for all intents and purposes it is ! The dirac delta w
 
 Out of interest lets derive the inverse of the continuous time Fourier transform. We can do it by using the Fourier inversion idea. If we think of \(x(t)\) as some superposition of complex exponentials, then we can define it as,
 
-$$ x(t) = \int_{-\infty}^{+\infty}A(f)e^{j2\pi ft}\;df = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}A(f)e^{j2\pi ft}e^{-j2\pi f_0t}\;df\;dt$$
+$$ x(t) = \int_{-\infty}^{+\infty}A(f)e^{j2\pi ft}\;df $$
 
 Now we need to solve for \(A(f)\). We can start by multiplying both sides by \(e^{-j2\pi f_0t}\) and integrating over \(t\),
 
-$$ \int_{-\infty}^{+\infty}x(t)e^{-j2\pi f_0t}\;dt = \int_{-\infty}^{+\infty}A(f)\int_{-\infty}^{+\infty}e^{j2\pi(f-f_0)t}\;dt\;df $$
+$$ \int_{-\infty}^{+\infty}x(t)e^{-j2\pi f_0t}\;dt = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}A(f)e^{j2\pi ft}e^{-j2\pi f_0t}\;df\;dt = \int_{-\infty}^{+\infty}A(f)\int_{-\infty}^{+\infty}e^{j2\pi(f-f_0)t}\;dt\;df $$
 
 You may recall this inner integral from the previous section on the orthogonality of the complex exponentials. Which means we can directly substitute in the result from that section,
 
@@ -63,7 +63,7 @@ $$ x(t) = \int_{-\infty}^{+\infty}X(f)e^{j2\pi ft}\;df $$
 
 Notice how during that the derivation hinges on the orthogonality of the exponential sinusoids !
 
-Now finally, lets take a step towards the discrete domain, what if the input is a sampled signal at from time interval \(T\) ? Well that means that our input signal is only really defined at certain specific time points like,
+Now finally, lets take a step towards the discrete domain, what if the input is a sampled signal, sampled at a time interval \(T\) ? Well that means that our input signal is only really defined at certain specific time points like,
 
 $$ \{nT : n=0,1,2,\ldots \} $$
 
@@ -71,8 +71,7 @@ That means we can redefine our Fourier transform integral like follows,
 
 $$X(f) = \sum_{n=-\infty}^{+\infty} T\cdot x(nT) e^{-j 2\pi f nT}$$
 
-The problem here is that the sampling time \(T\) is going to quickly become annoying to deal with. Its essentially just scaling the resultant output and normalizes the effective frequency of the complex exponentials. We could in fact just remove the redundant scaling factor and instead would in terms of normalized frequency,
-$$ f_N = fT = \frac{f}{f_s}$$
+The problem here is that the sampling time \(T\) is going to quickly become annoying to deal with. Its essentially just scaling the resultant output and normalizes the effective frequency of the complex exponentials. We could in fact just remove the redundant scaling factor.
 
 This means that our resultant values at the output of this discrete transform will be a different unit to the continuous time Fourier transform and will be off by a constant factor equal to the sampling time. This is fine as long we understand what we have done. We can now define a new transform, the Discrete Time Fourier Transform as,
 
@@ -94,7 +93,7 @@ Meaning that the DTFT is periodic over \(2\pi\) and that the spectrum repeats in
 $$ \omega = 2\pi \frac{f}{f_s} = 2\pi $$
 $$ f = f_s $$
 
-Meaning that the period is equal to the sampling frequency. This is the effect of sampling in the input, which causes repetitions of the spectrum in the frequency domain. This is where the nyquist limit of sampling signal at _at least_ twice the frequency of the largest frequency component of the input signal comes from. The reason being that if we increase the sampling rate, the period of the repetitions increases in the frequency domain. If we sample at least with a frequency of twice the largest frequency component, we can guarantee that the spectrum repetitions are separated. If we do not, then the repetitions can overlap which causes aliasing. Its difficult to imagine this based on text, but I'm feeling too lazy to pull out a python terminal right now.
+Meaning that the period is equal to the sampling frequency. This is the effect of sampling the input, which causes repetitions of the spectrum in the frequency domain. This is where the nyquist limit sampling theorem comes from, where you must sample the signal with a frequency of _at least_ twice the frequency of the largest frequency component of the input signal. The reason being that if we increase the sampling rate, the period of the repetitions increases in the frequency domain. If we sample at least with a frequency of twice the largest frequency component, we can guarantee that the spectrum repetitions are separated. If we do not, then the repetitions can overlap which causes aliasing. Its difficult to imagine this based on text, but I'm feeling too lazy to pull out a python terminal right now to plot an example.
 
 We showed previously that the complex exponentials in the continuous Fourier transform were orthogonal because their inner product resulted in the dirac delta function. The dirac delta function is a distribution defined over an infinite range. The complex exponentials used in the discrete time Fourier transform are also defined over an infinite range so their orthogonality should hold, but lets just make sure for kicks, why not ? 
 
@@ -102,9 +101,9 @@ $$\sum_{n=-\infty}^{+\infty}e^{j\omega_1 n}\overline{e^{j\omega_2 n}} = \sum_{n=
 
 This result is pretty much the discrete version of the continuous case. In the continuous case, it was zero other than if the frequencies were the same. In the discrete case we can see that this holds but is now a pulse train separated by \(2\pi\) which makes sense considering that the spectrum in the discrete case is also \(2\pi\) periodic.
 
-Ok now we can compute the spectrum of a discrete input signal which is great. The signal is invertible (we did not derive here but showed that the complex exponentials are orthogonal. The spectrum is continuous so you can use the inverse continuous Fourier transform and resample) too which is great. But the problem is that this method is still wholly impractical. We need to compute an infinite sum (computers don't have infinite memory or inifite length sequences in real life) and the resultant spectrum is periodic, which is great for theoretical purposes but for actual computation is not very practical. In practise most signals we deal with are of a finite length, which in the case of the DTFT will have the effect multiplying the input sequence by a rectangular window which will make all samples outside the input sequence lengths equal to zero. The effect on the spectrum is that multiplication in the time-domain is convolution in the frequency domain, meaning that the spectrum will be convolved with a sinc function which will distort the spectrum which is not ideal.
+Ok now we can compute the spectrum of a discrete input signal which is great. The signal is invertible (we did not derive here but showed that the complex exponentials are orthogonal. The spectrum is continuous so you can use the inverse continuous Fourier transform and resample) too which is great. But the problem is that this method is still wholly impractical. We need to compute an infinite sum (computers don't have infinite memory or inifite length sequences in real life) and the resultant spectrum is a continuous function, which is great for theoretical purposes but for actual computation is not very practical. In practise most signals we deal with are of a finite length, which in the case of the DTFT will have the effect multiplying the input sequence by a rectangular window which will make all samples outside the input sequence lengths equal to zero. The effect on the spectrum is that multiplication in the time-domain is convolution in the frequency domain, meaning that the spectrum will be convolved with a sinc function which will distort the spectrum which is not ideal.
 
-Our next question should be, in what cases can we compute the DTFT of finite length sequence in which we get an accurate undistorted result ? Well to get such a result that would mean that all of the frequency information of interest would be need to be contained in the finite length input which we have. The most example of that case would be a periodic signal whose period is equal to length of the input signal i.e. \(N\) meaning that we have exactly one period of the signal. We can represent that by splitting the DTFT into two sums where we compute the index by summing a combination of the two sum variables,
+Our next question should be, in what cases can we compute the DTFT of finite length sequence in which we get an accurate undistorted result ? Well to get such a result that would mean that all of the frequency information of interest would be need to be contained in the finite length input which we have. The most obvious example of that case would be a periodic signal whose period is equal to length of the input signal i.e. \(N\) meaning that we have exactly one period of the signal. We can represent that by splitting the DTFT into two sums where we compute the index by summing a combination of the two sum variables,
 
 $$ X(\omega) = \sum_{k=-\infty}^{+\infty}\sum_{n=0}^{N-1}x\left[n+kN\right]e^{-j\omega (n+kN)} $$
 
@@ -114,7 +113,7 @@ $$ X(\omega) = \sum_{k=-\infty}^{+\infty}\sum_{n=0}^{N-1}x\left[n\right]e^{-j\om
 
 $$ X(\omega) = \sum_{n=0}^{N-1}x\left[n\right]e^{-j\omega n}\sum_{k=-\infty}^{+\infty} e^{-j\omega kN} $$
 
-The inner sum is a geometric sum that be shown to be the following. Note that it is different to the previous but similar sums because the exponent sum is only every \(N^{\text{th}}\) value.
+The inner sum is a geometric sum that be shown to be the following. Note that it is different to the previous similar sums because the exponent sum is only every \(N^{\text{th}}\) value.
 
 $$ \sum_{k=-\infty}^{+\infty} e^{-j\omega kN} = \frac{2\pi}{N} \sum_{k=-\infty}^{+\infty}\delta(\omega - \frac{2\pi k}{N}) $$
 
