@@ -47,7 +47,7 @@
 }
 
 /* this should fix the ios mobile code blog font size bug
- * recorded here: https://github.com/adityatelange/hugo-PaperMod/issues/828 */
+ * recorded here: https://github.com/adityatelange/hugo-Mod/issues/828 */
 code {
     text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
